@@ -24,6 +24,6 @@ class InvalidYouTubeURLError(CustomException):
     """Raised when the provided YouTube URL is invalid or unsupported."""
     pass
 
-class LLMAPIError(CustomException):
+class LLM_APIError(CustomException):
     """Raised when an error occurs with the LLM API call."""
     pass
