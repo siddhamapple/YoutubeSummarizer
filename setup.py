@@ -25,5 +25,10 @@ setup(
     packages=find_packages(where="src"),
     install_requires=get_requirements("requirements.txt"),
     python_requires=">=3.8",   
+    entry_points={
+    'console_scripts': [
+        'youtube-summarizer-web=app:main',  # This means: run main() from app.py when user types `youtube-summarizer-web`
+    ],
+},
 
 )

@@ -2,4 +2,6 @@ youtube-transcript-api
 google-generativeai
 google-genai
 python-dotenv
+streamlit
+pandas
 -e .
