@@ -1,62 +1,58 @@
-#  YouTube Transcript Q&A & Summarizer
+# 🎬 YouTube Transcript Q&A & Summarizer
 
-> AI-powered app that lets users **summarize** or **ask questions** about any YouTube video by processing its transcript through advanced **Large Language Models (LLMs)**.
+**An AI-powered application that transforms YouTube videos into searchable, interactive knowledge sources through advanced Large Language Models (LLMs).**
 
----
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.28%2B-red.svg)](https://streamlit.io/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](tests/)
 
-##  Overview
+## 🚀 Overview
 
 YouTube Transcript Q&A & Summarizer is a modular, end-to-end pipeline that:
-- Retrieves transcripts from YouTube videos
-- Dynamically chunks long content for LLM processing
-- Supports both **natural language Q&A** and **video summarization**
-- Offers a **Streamlit web interface** for ease of use
 
-This project transforms videos into searchable, interactive knowledge sources.
+- **Retrieves transcripts** from YouTube videos automatically
+- **Dynamically chunks** long content for optimal LLM processing
+- **Supports both** natural language Q&A and video summarization
+- **Offers a Streamlit web interface** for seamless user experience
+- **Transforms videos** into searchable, interactive knowledge sources
 
----
+## ✨ Features
 
-##  Features
+### 🎯 **Instant Transcript Retrieval**
+Extracts subtitles automatically from YouTube videos with available captions.
 
--  **Instant Transcript Retrieval**  
-  Extracts subtitles automatically from YouTube videos with available captions.
+### 🤖 **LLM-Powered Summarization**
+Converts long video transcripts into concise, informative summaries using Google Gemini API.
 
--  **LLM-Powered Summarization**  
-  Converts long video transcripts into short, informative summaries.
+### ❓ **Ask Any Question**
+Enter natural language queries and get accurate answers based on video content.
 
--  **Ask Any Question**  
-  Enter a natural language query and get an answer based on the video content.
+### 🔄 **Map-Reduce Aggregation**
+Efficiently processes long videos by chunking content and combining answers or summaries.
 
--  **Map-Reduce Aggregation**  
-  Efficiently processes long videos by chunking and combining answers or summaries.
+### 🌐 **Streamlit Web App**
+Simple, interactive user interface to upload links, ask questions, and view results.
 
--  **Streamlit Web App**  
-  Simple, interactive user interface to upload links, ask questions, and view results.
+### 💾 **Downloadable Results**
+Export generated summaries or answers as `.txt` files for offline use.
 
--  **Downloadable Results**  
-  Export generated summaries or answers as `.txt` files.
+### 🧪 **Robust Testing**
+Unit-tested modular pipeline using pytest with comprehensive coverage.
 
--  **Robust Testing**  
-  Unit-tested modular pipeline using `pytest`.
+### 📊 **Logging & Error Handling**
+Centralized logging system with graceful failure mechanisms and detailed error tracking.
 
--  **Logging & Error Handling**  
-  Centralized logs and graceful failure mechanisms.
+## 📁 Project Structure
 
----
-
-##  Project Structure
-
-<img width="371" height="538" alt="image" src="https://github.com/user-attachments/assets/ed7a7270-5e3b-482a-ba3b-78beafce2318" />
-<img width="393" height="689" alt="image" src="https://github.com/user-attachments/assets/776cc461-b820-43ec-8d93-1def499eab2f" />
-<img width="366" height="784" alt="image" src="https://github.com/user-attachments/assets/81a9620d-abca-4037-b495-20e814673861" />
-
+```bash
 project-root/
 ├── app.py # Streamlit frontend
 ├── yt_logo.png # Logo for branding
 ├── requirements.txt # Dependencies
-├── requirements-dev.txt # Dev dependencies (e.g. pytest)
+├── requirements-dev.txt # Dev dependencies (pytest, etc.)
 ├── pytest.ini # Pytest configuration
-├── .env # API key and configs (not committed)
+├── .env # API keys and configs (not committed)
 ├── .gitignore # Git ignore rules
 ├── README.md # Project documentation
 ├── setup.py # For packaging (optional)
@@ -65,141 +61,181 @@ project-root/
 │ ├── init.py
 │ ├── components/
 │ │ ├── init.py
-│ │ ├── main.py
-│ │ ├── preprocessor.py
-│ │ ├── qa_engine.py
-│ │ ├── transcript_retriever.py
+│ │ ├── main.py # Main orchestrator
+│ │ ├── preprocessor.py # Text cleaning & chunking
+│ │ ├── qa_engine.py # LLM interface
+│ │ ├── transcript_retriever.py # YouTube transcript fetching
 │ │ └── internalTesting/ # Optional submodules
 │ ├── logger.py # Centralized logging
-│ ├── exception.py # Error handler
+│ ├── exception.py # Custom error handling
 │ └── utils.py # Helper utilities
 └── tests/
 ├── test_preprocessor.py
 ├── test_qa_engine.py
 └── test_transcript_retriever.py
-
-
-
-###  Prerequisites
-
-- Python 3.8+
-- YouTube video with captions
-- Gemini API key (or any supported LLM)
-
----
-
-###  Installation
-
 ```
+
+
+## 🛠️ Prerequisites
+
+- **Python 3.8+**
+- **YouTube video with captions**
+- **Google Gemini API key** (or any supported LLM)
+- **Internet connection** for API calls
+
+## 📥 Installation
+
+### 1. Clone the Repository
+```bash
 git clone https://github.com/siddhamapple/YoutubeSummarizer
 cd YoutubeSummarizer
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate      # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-or
-pip install -r requirments-dev.txt if developer
 ```
 
-### env
-Create a .env file at the project root and paste your API
 
+### 2. Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+Activate (Linux/Mac)
+```bash
+source venv/bin/activate 
+```
+Activate WIndows
+```bash
+venv\Scripts\activate 
+```
+
+
+### 3. Install Dependencies
+
+For regular usage-
+```bash
+pip install -r requirements.txt
+```
+
+For development (includes testing tools)-
+```bash
+pip install -r requirements-dev.txt
+```
+
+
+### 4. Environment Configuration
+Create a `.env` file in the project root:
+
+```bash
 GEMINI_API_KEY=your_gemini_api_key_here
-
-### USAGE
-enter on cmd-> streamlit run app.py
-Visit: http://localhost:8501
+```
 
 
-###  App Flow
-`Paste YouTube Link
+##  Usage
 
-`Choose Mode: Summarize or Ask a Question
+### Quick Start
 
-`Process Transcript
-
-`LLM runs per chunk (Map-Reduce)
-
-`Final answer/summary shown
-
-`Optional: Download output as .txt
+```bash
+streamlit run app.py
+```
 
 
-##  Running Tests
-Run all tests using:
+Visit: `http://localhost:8501`
 
+### App Workflow
+1. **Paste YouTube Link** → Enter any YouTube video URL
+2. **Choose Mode** → Select "Summarize" or "Ask a Question"
+3. **Process Transcript** → App fetches and processes video transcript
+4. **LLM Processing** → AI runs on each chunk (Map-Reduce approach)
+5. **View Results** → Final answer/summary displayed
+6. **Download** → Optional: Save output as `.txt` file
+
+## 🧪 Running Tests
+
+Execute the complete test suite:
 ```bash
 pytest
 ```
-The testing suite covers the following modules:
 
-✅ TranscriptRetriever: Verifies transcript fetch accuracy from YouTube
 
-✅ Preprocessor: Validates chunking, cleaning, and formatting logic
+### Test Coverage
+The testing suite covers:
 
-✅ QnAEngine: Checks consistency and quality of LLM-generated answers/summaries
+- ✅ **TranscriptRetriever**: Verifies transcript fetch accuracy from YouTube
+- ✅ **Preprocessor**: Validates chunking, cleaning, and formatting logic
+- ✅ **QnAEngine**: Checks consistency and quality of LLM-generated answers/summaries
 
-/tests/
+
+```bash
+tests/
 ├── test_preprocessor.py
 ├── test_qa_engine.py
 └── test_transcript_retriever.py
-
-Use ``requirements-dev.txt`` to install testing dependencies.
-
-##  Core Technologies Used
-| Tool/Library          | Description                                          |
-| --------------------- | ---------------------------------------------------- |
-| **Streamlit**         | Frontend UI for interacting with the app             |
-| **Google Gemini API** | Large Language Model used for Q\&A and summarization |
-| **python-dotenv**     | Manages `.env` configurations securely               |
-| **Pytest**            | Testing framework for verifying backend logic        |
-| **Custom Modules**    | Modular Python files built under `src/components/`   |
+```
 
 
-## Modular Design Components:
+## 🔧 Core Technologies
 
-transcript_retriever.py: Fetches captions from YouTube
+| Tool/Library | Description |
+|--------------|-------------|
+| **Streamlit** | Frontend UI for interacting with the app |
+| **Google Gemini API** | Large Language Model for Q&A and summarization |
+| **python-dotenv** | Manages .env configurations securely |
+| **Pytest** | Testing framework for backend logic verification |
+| **Custom Modules** | Modular Python architecture under `src/components/` |
 
-preprocessor.py: Cleans and chunks transcript
+### Modular Design Components
 
-qa_engine.py: Interfaces with the LLM for Q&A/summaries
+- **`transcript_retriever.py`**: Fetches captions from YouTube videos
+- **`preprocessor.py`**: Cleans and chunks transcript content
+- **`qa_engine.py`**: Interfaces with LLM for Q&A/summaries
+- **`main.py`**: Orchestrates the entire pipeline
 
+## 🗺️ Roadmap
 
+### 🔮 Upcoming Features
 
-## Roadmap
-Here’s what’s coming next:
-
- Multilingual Support: Auto-detect video language and translate
-
- Asynchronous Chunk Processing: Faster summarization with async LLM calls
-
- Deployment Options: Push to Streamlit Cloud / Hugging Face Spaces
-
- CLI Utilities: Command-line support for batch summarization
-
- UI Polish: Improve layout, theme, and mobile responsiveness
-
-
+- **🌍 Multilingual Support**: Auto-detect video language and translate
+- **⚡ Asynchronous Processing**: Faster summarization with async LLM calls
+- **☁️ Deployment Options**: Push to Streamlit Cloud / Hugging Face Spaces
+- **⌨️ CLI Utilities**: Command-line support for batch summarization
+- **🎨 UI Polish**: Improve layout, theme, and mobile responsiveness
+- **📈 Analytics**: Usage tracking and performance metrics
 
 ## 👨‍💻 Author
-- Siddham Jain
-- +919625208689
-   Shiv Nadar IOE | B.Tech in Electrical and Computer Engineering
-   siddhamjainn@gmail.com
 
+**Siddham Jain**  
+🎓 B.Tech in Electrical and Computer Engineering | Shiv Nadar IOE  
+📧 siddhamjainn@gmail.com  
+📱 +919625208689
 
-##  Contributing
+## 🤝 Contributing
+
 We welcome contributions! Follow these steps:
 
-Fork this repository
+1. **Fork** this repository
+2. **Create** a new feature branch (`git checkout -b feature-name`)
+3. **Commit** your changes (`git commit -am 'Add feature'`)
+4. **Push** to the branch (`git push origin feature-name`)
+5. **Open** a pull request 🚀
 
-Create a new feature branch (git checkout -b feature-name)
+### Development Guidelines
 
-Commit your changes (git commit -am 'Add feature')
+- Follow PEP 8 style guidelines
+- Write comprehensive tests for new features
+- Update documentation for any API changes
+- Use meaningful commit messages
 
-Push to the branch (git push origin feature-name)
 
-Open a pull request 🚀
+
+## 🙏 Acknowledgments
+
+- Thanks to the YouTube Transcript API for enabling transcript extraction
+- Google Gemini API for powerful language processing capabilities
+- Streamlit community for the amazing web app framework
+
+---
+
+**⭐ If you find this project helpful, please give it a star!**
+
+For questions, issues, or feature requests, please open an issue on GitHub.
+
+
+
