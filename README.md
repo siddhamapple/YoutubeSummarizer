@@ -7,15 +7,54 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](tests/)
 
-## 🚀 Overview
+
+
+
+
+
+## 🚀 Overview 
 
 YouTube Transcript Q&A & Summarizer is a modular, end-to-end pipeline that:
 
 - **Retrieves transcripts** from YouTube videos automatically
 - **Dynamically chunks** long content for optimal LLM processing
-- **Supports both** natural language Q&A and video summarization
 - **Offers a Streamlit web interface** for seamless user experience
 - **Transforms videos** into searchable, interactive knowledge sources
+
+## Project Architecture
+
+Here is a visual overview of the application's pipeline, from user input to final output.
+
+```mermaid
+
+graph TD
+    subgraph "User Interface (Streamlit)"
+        A[User provides YouTube URL] --> B{Streamlit App};
+    end
+
+    subgraph "Backend Processing Pipeline"
+        B --> C[Transcript Retriever];
+        C -->|Raw Transcript| D[Preprocessor];
+        D -->|Cleaned Text| E[Dynamic Chunker];
+        E -->|Text Chunks| F[QA Engine];
+        F -->|Map: Process each chunk| G((LLM API));
+        G -->|Chunk Answers| F;
+        F -->|Reduce: Synthesize final answer| G;
+    end
+
+    subgraph "Final Output"
+        G -->|Unified Answer/Summary| B;
+        B --> H[Display to User];
+        H --> I[Download Output];
+    end
+
+    style F fill:##bbb,stroke:#333,stroke-width:2px
+    style G fill:#fff,stroke:#333,stroke-width:2px
+```
+
+
+
+
 
 ## ✨ Features
 
