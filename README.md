@@ -55,7 +55,7 @@ project-root/
 ├── .env # API keys and configs (not committed)
 ├── .gitignore # Git ignore rules
 ├── README.md # Project documentation
-├── setup.py # For packaging (optional)
+├── setup.py # For packaging , still to launch but made it
 ├── logs/ # Runtime logs
 ├── src/
 │ ├── init.py
@@ -221,15 +221,7 @@ We welcome contributions! Follow these steps:
 - Follow PEP 8 style guidelines
 - Write comprehensive tests for new features
 - Update documentation for any API changes
-- Use meaningful commit messages
-
-
-
-## 🙏 Acknowledgments
-
-- Thanks to the YouTube Transcript API for enabling transcript extraction
-- Google Gemini API for powerful language processing capabilities
-- Streamlit community for the amazing web app framework
+- Use only meaningful commit messages 
 
 ---
 
